@@ -11,7 +11,7 @@ Ankit Pal<sup>1</sup> · Guillaume Kugener<sup>2</sup> · Sofia Volpi<sup>2</sup
 <sup>1</sup>Department of Biomedical Informatics, Harvard Medical School · <sup>2</sup>Department of Surgery, Beth Israel Deaconess Medical Center · <sup>†</sup>Equal senior authorship
 
 [![Project page](https://img.shields.io/badge/Project-Page-e91e63)](https://egosurghands.github.io)
-[![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-aaditya%2FEgoSurgHands-ffcc4d)](https://huggingface.co/datasets/aaditya/EgoSurgHands)
+[![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-harvardsil%2FEgoSurgHands-ffcc4d)](https://huggingface.co/datasets/harvardsil/EgoSurgHands)
 [![Data license](https://img.shields.io/badge/Data-CC%20BY--NC--SA%204.0-lightgrey)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 </div>
@@ -101,7 +101,7 @@ About 50 GB of disk holds the backbone checkpoints and the dataset. Tested with 
 
 ### Data access
 
-The dataset is gated. Request access at [huggingface.co/datasets/aaditya/EgoSurgHands](https://huggingface.co/datasets/aaditya/EgoSurgHands), then log in with `huggingface-cli login` or set `HF_TOKEN`. The MANO model files (`MANO_RIGHT.pkl`, `MANO_LEFT.pkl`) come from [mano.is.tue.mpg.de](https://mano.is.tue.mpg.de/) after registration.
+The dataset is gated. Request access at [huggingface.co/datasets/harvardsil/EgoSurgHands](https://huggingface.co/datasets/harvardsil/EgoSurgHands), then log in with `huggingface-cli login` or set `HF_TOKEN`. The MANO model files (`MANO_RIGHT.pkl`, `MANO_LEFT.pkl`) come from [mano.is.tue.mpg.de](https://mano.is.tue.mpg.de/) after registration.
 
 ### Quick start
 
