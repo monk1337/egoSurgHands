@@ -1,0 +1,17 @@
+torch>=2.4.0
+torchvision
+numpy
+pyarrow
+datasets>=2.14
+huggingface_hub
+matplotlib>=3.7
+Pillow
+opencv-python
+tqdm
+pandas
+scipy
+einops
+smplx
+chumpy
+timm
+yacs

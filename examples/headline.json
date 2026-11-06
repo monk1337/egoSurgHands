@@ -1,0 +1,81 @@
+{
+  "_doc": "Frozen headline numbers (May 7 2026, post-WiLoR-fix, 58K two-headed JRN). Reproduce with reproduce.sh; tolerance ~0.1 mm at the floating-point determinism floor.",
+  "protocol": "v2 train-on-train: train JRN on aria_v2_train_mps (41,909 rows / 55 PRs), eval on aria_v2_val (9,476 rows / 13 PRs). PR-disjoint by construction.",
+  "metric": "PA-MPJPE-MPS (mm) and absolute MPJPE (mm) -- Aria MPS GT, Umeyama Procrustes, OP_VALID 20-joint subset, 95% bootstrap CI from 1000 PR-keyed resamples",
+  "jrn_arch": "Two-headed MLP, hidden=128, GELU, zero-init heads. Pose head (63->128->128->63, 32831 params) + translation head (66->128->128->3, 25475 params). Total 58306 params.",
+  "jrn_train": "AdamW lr=1e-3 wd=1e-4, batch=512, 60 epochs, seed=42, loss = MSE(pose) + MSE(trans), ~8 sec on A100",
+  "backbones": {
+    "jointtransformer": {
+      "tag": "ego-pretrained",
+      "n_train": 41909, "n_val": 9476,
+      "zs_pa_mpjpe":  14.95, "zs_ci":  [14.39, 15.46],
+      "jrn_pa_mpjpe": 10.70, "jrn_ci": [10.21, 11.19],
+      "delta_pa_pct": -28.4,
+      "zs_mpjpe_abs":  352.7,
+      "jrn_mpjpe_abs":  79.0,
+      "delta_abs_pct": -77.6
+    },
+    "wildhands": {
+      "tag": "ego-pretrained, same-arch as HaMeR",
+      "n_train": 41909, "n_val": 9476,
+      "zs_pa_mpjpe":  20.48, "zs_ci":  [19.72, 21.06],
+      "jrn_pa_mpjpe": 10.40, "jrn_ci": [9.91, 10.94],
+      "delta_pa_pct": -49.2,
+      "zs_mpjpe_abs":  533.3,
+      "jrn_mpjpe_abs":  75.8,
+      "delta_abs_pct": -85.8
+    },
+    "hamer": {
+      "tag": "non-egocentric reference",
+      "n_train": 41909, "n_val": 9476,
+      "zs_pa_mpjpe":  24.99, "zs_ci":  [23.77, 25.89],
+      "jrn_pa_mpjpe": 16.11, "jrn_ci": [14.16, 17.69],
+      "delta_pa_pct": -35.5,
+      "zs_mpjpe_abs":  365.0,
+      "jrn_mpjpe_abs":  91.7,
+      "delta_abs_pct": -74.9
+    },
+    "meshgraphormer": {
+      "tag": "non-egocentric (third-person training)",
+      "n_train": 41909, "n_val": 9476,
+      "zs_pa_mpjpe":  26.22, "zs_ci":  [24.66, 27.77],
+      "jrn_pa_mpjpe": 15.12, "jrn_ci": [14.43, 15.69],
+      "delta_pa_pct": -42.3,
+      "zs_mpjpe_abs":  400.5,
+      "jrn_mpjpe_abs":  96.1,
+      "delta_abs_pct": -76.0
+    },
+    "simplehand": {
+      "tag": "minimum-capacity baseline",
+      "n_train": 41909, "n_val": 9476,
+      "zs_pa_mpjpe":  28.59, "zs_ci":  [27.67, 29.73],
+      "jrn_pa_mpjpe": 21.10, "jrn_ci": [20.01, 22.01],
+      "delta_pa_pct": -26.2,
+      "zs_mpjpe_abs":  356.1,
+      "jrn_mpjpe_abs": 109.8,
+      "delta_abs_pct": -69.2
+    },
+    "wilor": {
+      "tag": "post-wrapper-fix (mano_to_op double-remap removed)",
+      "n_train": 41909, "n_val": 9476,
+      "zs_pa_mpjpe":  25.34, "zs_ci":  [24.10, 26.30],
+      "jrn_pa_mpjpe": 15.91, "jrn_ci": [14.13, 17.84],
+      "delta_pa_pct": -37.2,
+      "zs_mpjpe_abs":  369.9,
+      "jrn_mpjpe_abs":  88.0,
+      "delta_abs_pct": -76.2
+    }
+  },
+  "convergent_ego_floor": {
+    "pa_mpjpe": { "wh_jrn": 10.40, "jt_jrn": 10.70, "gap_mm": 0.30 },
+    "mpjpe_abs": { "wh_jrn": 75.8, "jt_jrn": 79.0, "gap_mm": 3.2 },
+    "interpretation": "Two ego-pretrained backbones converge at ~10.5 mm PA-MPJPE and ~77 mm absolute MPJPE with overlapping bootstrap CIs."
+  },
+  "best_chain": {
+    "name": "WildHands+JRN",
+    "pa_mpjpe": 10.40,
+    "mpjpe_abs": 75.8,
+    "pa_reduction_vs_hamer_zs_pct": -58.4,
+    "abs_reduction_vs_wh_zs_pct": -85.8
+  }
+}

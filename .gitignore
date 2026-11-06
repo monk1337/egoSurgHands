@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.cache_patches/
+outputs/
+.DS_Store
+*.swp
+.vscode/
+.idea/
