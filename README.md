@@ -181,7 +181,3 @@ WiLoR's `wilor/models/mano_wrapper.py` already permutes joints to OpenPose order
 We thank the surgical trainees who wore the Aria glasses, and the annotators and surgeons who reviewed, corrected and adjudicated the evaluation frames. Recordings use Project Aria glasses and Machine Perception Services from Meta Reality Labs Research. GPU compute was provided by Nebius.
 
 The benchmark builds on the public releases of [HaMeR](https://github.com/geopavlakos/hamer) (Pavlakos et al., CVPR 2024), [WiLoR](https://github.com/rolpotamias/WiLoR) (Potamias et al., CVPR 2025), [WildHands](https://github.com/ap229997/hands) (Prakash et al., ECCV 2024), [JointTransformer](https://github.com/karimknaebel/JointTransformer) (Knaebel, HANDS 2023 ARCTIC challenge winner), [MeshGraphormer](https://github.com/microsoft/MeshGraphormer) (Lin et al., ICCV 2021), [SimpleHand](https://github.com/patienceFromZhou/simpleHand) (Zhou et al., CVPR 2024), [IntagHand](https://github.com/Dw1010/IntagHand) (Li et al., CVPR 2022) and [MediaPipe Hands](https://github.com/google-ai-edge/mediapipe) (Zhang et al., 2020).
-
-## Contact
-
-Questions and issues: [open an issue](https://github.com/monk1337/egoSurgHands/issues) or email Ankit Pal (ankit_pal@fas.harvard.edu).
